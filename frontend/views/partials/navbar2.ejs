@@ -1,0 +1,50 @@
+<link rel="stylesheet" href="/styles/style-navbar.css">
+<nav class="navbar">
+    <div class="logo">
+        <img src="/images/logo.png">
+    </div>
+    <div class="menu-toggle" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+    <form action="/api/posts/:username" method="GET" class="search-bar">
+        <input type="text" name="q" placeholder="Search..." />
+        <button type="submit">🔍</button>
+    </form>
+    <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li class="post-btn"><a href="/create-post">+Create a post</a></li>
+        <li><a href="/my-posts">My posts</a></li>
+        <li><a href="/logout">Logout</a></li>
+    </ul>
+</nav>
+<script>
+    const searchForm = document.querySelector('.search-bar');
+    if (searchForm) {
+        searchForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const input = this.querySelector('input[name="q"]');
+            const username = input.value.trim();
+            if (username) {
+                window.location.href = `${encodeURIComponent(username)}`;
+            }
+        });
+    }
+
+    function toggleMenu() {
+        const navLinks = document.querySelector('.nav-links');
+        const menuToggle = document.querySelector('.menu-toggle');
+        navLinks.classList.toggle('active');
+        menuToggle.classList.toggle('active');
+    }
+
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+            const navLinks = document.querySelector('.nav-links');
+            const menuToggle = document.querySelector('.menu-toggle');
+            navLinks.classList.remove('active');
+            menuToggle.classList.remove('active');
+        });
+    });
+</script>

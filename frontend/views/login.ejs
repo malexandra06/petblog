@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <link rel="stylesheet" href="/styles/style.css">
+</head>
+<body>
+  <a href="/" class="home-btn">🏠 Home</a>
+  <div class="container">
+    <div class="form-box Register">
+      <form action="/api/users/login" method="POST">
+        <h1>Login</h1>
+        <div class="field">
+          <input type="text" id="field" name="field" placeholder="email or username" required>
+        </div>
+        <div class="field">
+          <input type="password" id="password" name="password" placeholder="password" required>
+        </div>
+        <% if (typeof error !== "undefined") { %>
+          <p class="error"><%= error %></p>
+        <% } %>
+        <button type="submit">Login</button>
+        <p class="form-link">Don't you have an account? <a href="/register">Sign Up</a></p>
+      </form>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="/scripts/script.js"></script>
+</body>
+</html>

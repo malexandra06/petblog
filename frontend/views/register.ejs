@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up</title>
+  <link rel="stylesheet" href="/styles/style.css">
+</head>
+<body>
+  <a href="/" class="home-btn">🏠 Home</a>
+  <div class="container">
+    <div class="form-box Register">
+      <form action="/api/users/register" method="post">
+        <h1>Sign Up</h1>
+        <div class="field">
+          <input type="text" id="email" name="email" placeholder="email" required>
+        </div>
+        <div class="field">
+          <input type="text" id="username" name="username" placeholder="username" required>
+        </div>
+        <div class="field">
+          <input type="password" id="password" name="password" placeholder="password" required>
+        </div>
+        <button type="submit">Sign Up</button>
+        <% if (typeof error !== "undefined") { %>
+          <p class="error"><%= error %></p>
+        <% } %>
+        <p class="form-link">Already have an account? <a href="/login">Login</a></p>
+      </form>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="/scripts/script.js"></script>
+</body>
+</html>
